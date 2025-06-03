@@ -12,9 +12,7 @@ export default merge(common, {
   plugins: [
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify("production"),
-      "process.env.API_URL": JSON.stringify(
-        "https://ahj-rxjs-dlmdfqpoy-tuan-anhs-projects-4110927b.vercel.app/api/messages/unread"
-      ),
+      "process.env.API_URL": JSON.stringify("/api/messages/unread"),
     }),
   ],
 });

@@ -11,7 +11,12 @@ export default merge(common, {
     compress: true,
     port: 8080,
     proxy: {
-      "/api": "http://localhost:3000",
+      "/api": {
+        target:
+          "https://ahj-rxjs-dlmdfqpoy-tuan-anhs-projects-4110927b.vercel.app",
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
 
