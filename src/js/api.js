@@ -2,10 +2,10 @@ import { ajax } from "rxjs/ajax";
 import { interval, of } from "rxjs";
 import { catchError, map, startWith, switchMap } from "rxjs/operators";
 
-// const API_URL =
-//   "https://ahj-rxjs-dlmdfqpoy-tuan-anhs-projects-4110927b.vercel.app/api/messages/unread";
-
-const API_URL = "http://localhost:3000/api/messages/unread";
+const API_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000/api/messages/unread"
+    : "https://ahj-rxjs-dlmdfqpoy-tuan-anhs-projects-4110927b.vercel.app/api/messages/unread";
 
 const POLLING_INTERVAL = 5000;
 
