@@ -7,16 +7,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-
-const allowedOrigins = ["https://tpanhh7.github.io", "http://localhost:8080"];
+const port = process.env.PORT || 3000;
 
 app.use((req, res, next) => {
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-  }
-  res.setHeader("Access-Control-Allow-Methods", "GET");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   next();
 });
 
@@ -35,11 +33,6 @@ app.get("/api/messages/unread", (req, res) => {
     timestamp: Math.floor(Date.now() / 1000),
     messages,
   });
-});
-
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
-  console.log(`API endpoint: http://localhost:${port}/api/messages/unread`);
 });
 
 export default app;
